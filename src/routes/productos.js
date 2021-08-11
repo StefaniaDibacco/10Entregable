@@ -5,6 +5,19 @@ const productos = new Productos ();
 
 const router = express.Router();
 
+router.get('/vista',[], async (req, res) => {
+    res.render('listaDinamica', {
+    layout: 'index',
+		products: await productos.leer(),
+    count: (await productos.leer()).length > 0 ? true : false
+		    
+  })
+});
+
+router.get('/formulario',[], async (req, res) => {
+  res.render('formulario', { layout: 'index'});
+});
+
 router.get('/listar',[], async (req, res) => {
   
     let data=await productos.leer();

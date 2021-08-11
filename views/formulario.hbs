@@ -1,0 +1,18 @@
+  <div class="container-fluid">
+    <h1>INGRESE PRODUCTO</h1>
+    <form action="/api/productos/guardar" method="post">
+      <div class="mb-3">
+        <label for="title" class="form-label">Title:</label>
+        <input type="text" class="form-control" id="title" name="title">
+      </div>
+      <div class="mb-3">
+        <label for="price" class="form-label">Price:</label>
+        <input type="text" class="form-control" id="price" name="price">
+      </div>
+      <div class="mb-3">
+        <label for="thumbnail" class="form-label">thumbnail:</label>
+        <input type="text" class="form-control" id="thumbnail" name="thumbnail">
+      </div>
+      <button type="submit" class="btn btn-success">GUARDAR</button>   
+    </form>
+  </div>

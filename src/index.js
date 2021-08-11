@@ -12,8 +12,8 @@ const publicFolderPath = path.resolve(__dirname, '../public');
 app.use(express.static(publicFolderPath));
 
 const layoutFolderPath = path.resolve(__dirname, '../views/layouts');
-const defaultLayerPth = path.resolve(__dirname, '../views/layouts/index.hbs');
-const partialFolderPath = path.resolve(__dirname, '../views/partial');
+const partialFolderPath = path.resolve(__dirname, '../views/partials');
+const defaultLayerPth = path.resolve(__dirname, '../views/main.hbs');
 app.set('view engine', 'hbs');
 
 app.engine(
@@ -27,25 +27,17 @@ app.engine(
 );
 
 
-app.get('/', (req, res) => {
-  const listaDinamica ={
-  nombre: 'calculadora',
-  precio: 200,
-  url: 'url',
-  }
-  res.render('main', listaDinamica);
-});
-
-
-//const publicPath = path.resolve(__dirname, '../public');
-//app.use(express.static(publicPath));
 
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-
 app.use('/api/productos', routerProductos);
+
+// Endpoint GET de la pagina principal de la API
+app.get('/api/', (req, res) => {
+	res.render('main', { layout: 'index' });
+});
 
 
 const server = app.listen(puerto, () =>
